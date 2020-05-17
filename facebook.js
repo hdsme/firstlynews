@@ -45,11 +45,12 @@ function Facebook(accessToken, groupId)
         let formPublish = new FormData();
         let date = moment().format('dddd').toUpperCase() + ' NGÀY '+ moment().format('LL').toUpperCase();
         formPublish.append('message',
-            `# TIN TỨC BUỔI TRƯA ${date}\n` +
+            `TIN TỨC BUỔI TRƯA ${date}\n` +
             '\n' +
-            '## thông tin\n' +
+            'Thông tin\n' +
             '* Bài viết được cập nhật vào lúc 12 giờ trưa hàng ngày\n' +
-            '* Theo dõi bảng tin trên Instagram: [tại đây](https://www.instagram.com/firstlymedia)');
+            '* Theo dõi bảng tin trên Instagram:\n' + 
+            '  https://www.instagram.com/firstlymedia)');
         formPublish.append('formatting', 'MARKDOWN');
 
         for (let i = 0; i < images.length ; i++) {
