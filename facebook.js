@@ -3,10 +3,10 @@ const FormData = require('form-data');
 const moment = require('moment');
 moment.locale('vi');
 
-function Facebook(accessToken,pageId)
+function Facebook(accessToken, groupId)
 {
     const facebookApiV6 = 'https://graph.facebook.com/v6.0';
-    let urlCreateImage = `${facebookApiV6}/${pageId}/photos`;
+    let urlCreateImage = `${facebookApiV6}/${groupId}/photos`;
 
     this.postAsPage = (pageId) => {
         urlCreateImage = `${facebookApiV6}/${pageId}/photos`;
@@ -49,7 +49,7 @@ function Facebook(accessToken,pageId)
             '\n' +
             '## thông tin\n' +
             '* Bài viết được cập nhật vào lúc 12 giờ trưa hàng ngày\n' +
-            '* Theo dõi bảng tin trên Instagram [tại đây](https://www.instagram.com/firstlymedia)');
+            '* Theo dõi bảng tin trên Instagram: [tại đây](https://www.instagram.com/firstlymedia)');
         formPublish.append('formatting', 'MARKDOWN');
 
         for (let i = 0; i < images.length ; i++) {
@@ -60,7 +60,7 @@ function Facebook(accessToken,pageId)
         // formPublish.append(`attached_media[${images.length}]`, `{"media_fbid":"${lastImageId}"}`);
 
 
-        let response = await fetch(`${facebookApiV6}/${pageId}/feed?access_token=`+accessToken, {
+        let response = await fetch(`${facebookApiV6}/${groupId}/feed?access_token=`+accessToken, {
             method: 'POST',
             body: formPublish,
         });

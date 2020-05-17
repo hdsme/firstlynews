@@ -16,8 +16,11 @@ const generator = async () => {
         images.push(await createImage.create(feed.img, feed.title, feed.description));
     }
 
-    let facebook = new Facebook(process.env.ACCESS_TOKEN, process.env.PAGE_ID);
+    let facebook = new Facebook(process.env.ACCESS_TOKEN, process.env.GROUP_ID);
 
+    if (process.env.PAGE_ID) {
+        facebook.postAsPage(process.env.PAGE_ID)
+    }
     facebook.postNews(images);
 };
 
