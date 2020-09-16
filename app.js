@@ -13,9 +13,9 @@ const generator = async () => {
     let createImage = new CreateImage();
     let images = [];
     for (const feed of news) {
-        images.push(await createImage.create(feed.img, feed.title, feed.description));
+        images.push(await createImage.create(feed.img, feed.category, feed.title));
     }
-
+    
     let facebook = new Facebook(process.env.ACCESS_TOKEN, process.env.GROUP_ID);
 
     if (process.env.PAGE_ID) {
