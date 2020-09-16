@@ -24,26 +24,11 @@ function getAllStr(str, start, end) {
 }
 
 function VnExpress() {
-    let linkRSSs = [
-        "https://vnexpress.net/rss/the-gioi.rss",
-        "https://vnexpress.net/rss/thoi-su.rss",
-        "https://vnexpress.net/rss/kinh-doanh.rss",
-        "https://vnexpress.net/rss/giai-tri.rss",
-        "https://vnexpress.net/rss/the-thao.rss",
-        "https://vnexpress.net/rss/phap-luat.rss",
-        "https://vnexpress.net/rss/giao-duc.rss",
-        "https://vnexpress.net/rss/suc-khoe.rss",
-        "https://vnexpress.net/rss/khoa-hoc.rss",
-        "https://vnexpress.net/rss/so-hoa.rss",
-        "https://vnexpress.net/rss/oto-xe-may.rss"
-    ];
-    let random = Math.floor(Math.random() * linkRSSs.length);
-    const linkRSS = linkRSSs[random];
-    const minLength = 500;
-    const maxLength = 1500;
+    const linkRSS = 'https://vnexpress.net/rss/tin-moi-nhat.rss';
+    const minWord = 30;
+    const maxWord = 170;
 
     this.get = async() => {
-        if(linkRSS) {
         let parser = new Parser();
         let feed = await parser.parseURL(linkRSS);
         let news = [];
@@ -51,20 +36,16 @@ function VnExpress() {
             if(rss.link.includes('https://vnexpress.net')) { //not get news from english/photo page
                 let imgLink = getStr(rss.content, '<img src="','"');
                 if (imgLink && !imgLink.includes('gif')) {
-                    let description = getStr(rss.content, '</a></br>', ']');
                     let response = await fetch(rss.link);
                     let content = await response.text();
                     let article = getStr(content, '<article', '</article');
-                    let caption = getDescription(article);
-                    let category = getCategory(linkRSS);
+                    let description = getDescription(article);
                     if (description) {
-                        //description = description.replace(`  `,' ');
+                        description = description.replace(`  `,' ');
                         news.push({
                             title: rss.title,
                             img: imgLink,
                             description: description,
-                            caption: caption,
-                            category: category,
                         });
                     }
                 }
@@ -73,8 +54,7 @@ function VnExpress() {
             }
         }
 
-            return news;
-      }
+        return news;
     };
 
     const getDescription = (content) => {
@@ -82,14 +62,14 @@ function VnExpress() {
 
         if (!descriptions) return null;
         let descReturn = '';
-        let currentlength = 0;
+        let currentNumWord = 0;
         for(const description of descriptions) {
             let desc = description.replace(/(<([^>]+)>)/ig,"");
-            let length = desc.length;
-            if (length >= minLength && !description.includes('videoplayer') && !description.includes('image')) {
-                if (length + currentlength < maxLength) {
+            let numWord = desc.split(' ').length;
+            if (numWord >= minWord && !description.includes('videoplayer') && !description.includes('image')) {
+                if (numWord + currentNumWord < maxWord) {
                     descReturn += `${desc} `;
-                    currentlength += length;
+                    currentNumWord += numWord;
                 } else {
                     break;
                 }
@@ -98,54 +78,6 @@ function VnExpress() {
 
         return descReturn ? descReturn.replace(/>/,'') : null;
     }
-
-    const getCategory = (url) => {
-        
-        let c = getStr(url, 'https://vnexpress.net/rss/', '.rss');
-        let cate;
-        switch(c){
-            case "the-gioi":
-            cate = "BẢNG TIN THẾ GIỚI";
-                break;
-            case "thoi-su":
-            cate = "BẢNG TIN THỜI SỰ";
-                break;
-            case "kinh-doanh":
-            cate = "BẢNG TIN KINH DOANH";
-                break;
-            case "giai-tri":
-            cate = "BẢNG TIN GIẢI TRÍ";
-                break;
-            case "the-thao":
-            cate = "BẢNG TIN THỂ THAO";
-                break;
-            case "suc-khoe":
-            cate = "BẢNG TIN SỨC KHỎE";
-                break;
-            case "phap-luat":
-            cate = "BẢNG TIN PHÁP LUẬT";
-                break;
-            case "the-thao":
-            cate = "BẢNG TIN THỂ THAO";
-                break;
-            case "giao-duc":
-            cate = "BẢNG TIN GIÁO DỤC";
-                break;
-            case "khoa-hoc":
-            cate = "BẢNG TIN KHOA HỌC";
-                break;
-            case "so-hoa":
-            cate = "BẢNG TIN SỐ HÓA";
-                break;
-            case "oto-xe-may":
-            cate = "BẢNG TIN ÔTÔ XE MÁY";
-                break;
-            default:
-                break;
-        }
-        return cate;
-    }
-    
 }
 
 module.exports = VnExpress;
