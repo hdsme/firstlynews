@@ -66,6 +66,7 @@ function CreateImage() {
         ctx.rect(0, 0, MAX_WIDTH_CANVAS, 80);
         ctx.fillStyle = "red";
         ctx.fill();
+        ctx.fillStyle = "#ffffff";
         ctx.fillText(title, 0, 0);
         const paddingLeft = 20;
         const paddingRight = 20;
