@@ -49,7 +49,7 @@ function CreateImage() {
 
         //const canvas = createCanvas(maxWidth, height + spaceBetweenCanvas);
         const canvas = await loadImage('background.png');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas;
 
         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
         ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height + margin, titleCanvas.canvas.width, titleCanvas.canvas.height);
@@ -63,16 +63,8 @@ function CreateImage() {
         const canvas = createCanvas(MAX_WIDTH_CANVAS, 80);
         const ctx = canvas.getContext('2d');
         ctx.font = 'bold 30px Helvetica, Arial, sans-serif';
-        ctx.beginPath();
-        ctx.rect(0, 0, MAX_WIDTH_CANVAS, 80);
-        ctx.fillStyle = "red";
-        ctx.fill();
-        ctx.fillStyle = "#ffffff";
-        ctx.fillText(title, 0, 0);
         const paddingLeft = 20;
         const paddingRight = 20;
-
-        
         let heightText = wrapText(ctx, title, paddingLeft, 30, canvas.width - paddingRight, 30);
 
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
