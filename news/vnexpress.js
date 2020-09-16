@@ -101,46 +101,46 @@ function VnExpress() {
         let c = getStr(url, 'https://vnexpress.net/rss/', '.rss');
         switch(c){
             case "the-gioi":
-            let category = "BẢNG TIN THẾ GIỚI";
+            cate = "BẢNG TIN THẾ GIỚI";
                 break;
             case "thoi-su":
-            let category = "BẢNG TIN THỜI SỰ";
+            cate = "BẢNG TIN THỜI SỰ";
                 break;
             case "kinh-doanh":
-            let category = "BẢNG TIN KINH DOANH";
+            cate = "BẢNG TIN KINH DOANH";
                 break;
             case "giai-tri":
-            let category = "BẢNG TIN GIẢI TRÍ";
+            cate = "BẢNG TIN GIẢI TRÍ";
                 break;
             case "the-thao":
-            let category = "BẢNG TIN THỂ THAO";
+            cate = "BẢNG TIN THỂ THAO";
                 break;
             case "suc-khoe":
-            let category = "BẢNG TIN SỨC KHỎE";
+            cate = "BẢNG TIN SỨC KHỎE";
                 break;
             case "phap-luat":
-            let category = "BẢNG TIN PHÁP LUẬT";
+            cate = "BẢNG TIN PHÁP LUẬT";
                 break;
             case "the-thao":
-            let category = "BẢNG TIN THỂ THAO";
+            cate = "BẢNG TIN THỂ THAO";
                 break;
             case "giao-duc":
-            let category = "BẢNG TIN GIÁO DỤC";
+            cate = "BẢNG TIN GIÁO DỤC";
                 break;
             case "khoa-hoc":
-            let category = "BẢNG TIN KHOA HỌC";
+            cate = "BẢNG TIN KHOA HỌC";
                 break;
             case "so-hoa":
-            let category = "BẢNG TIN SỐ HÓA";
+            cate = "BẢNG TIN SỐ HÓA";
                 break;
             case "oto-xe-may":
-            let category = "BẢNG TIN ÔTÔ XE MÁY";
+            cate = "BẢNG TIN ÔTÔ XE MÁY";
                 break;
             default:
                 break;
         }
     }
-    return category;
+    return cate;
 }
 
 module.exports = VnExpress;
