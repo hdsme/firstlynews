@@ -85,8 +85,10 @@ function VnExpress() {
     ];
     let random = Math.floor(Math.random() * linkRSSs.length);
     const linkRSS = linkRSSs[random];
+    console.log(linkRSS);
     //const linkRSS = 'https://vnexpress.net/rss/tin-moi-nhat.rss';
     const category = getCategory(linkRSS);
+    console.log(category);
     const minWord = 50;
     const maxWord = 200;
 
@@ -100,7 +102,7 @@ function VnExpress() {
                 let imgLink = getStr(rss.content, '<img src="','"');
                 let title = getStr(rss.content, '></a></br>', ']]');  
                 if (imgLink && title && category && !imgLink.includes('gif')) {
-                    
+                    console.log(title);
                     let response = await fetch(rss.link);
                     let content = await response.text();
                     let article = getStr(content, '<article', '</article');
