@@ -22,20 +22,85 @@ function getAllStr(str, start, end) {
 
     return null;
 }
+function getCategory(url){
+        
+    let c = getStr(url, 'https://vnexpress.net/rss/', '.rss');
+    let cate;
+    switch(c){
+        case "the-gioi":
+        cate = "BẢNG TIN THẾ GIỚI";
+            break;
+        case "thoi-su":
+        cate = "BẢNG TIN THỜI SỰ";
+            break;
+        case "kinh-doanh":
+        cate = "BẢNG TIN KINH DOANH";
+            break;
+        case "giai-tri":
+        cate = "BẢNG TIN GIẢI TRÍ";
+            break;
+        case "the-thao":
+        cate = "BẢNG TIN THỂ THAO";
+            break;
+        case "suc-khoe":
+        cate = "BẢNG TIN SỨC KHỎE";
+            break;
+        case "phap-luat":
+        cate = "BẢNG TIN PHÁP LUẬT";
+            break;
+        case "the-thao":
+        cate = "BẢNG TIN THỂ THAO";
+            break;
+        case "giao-duc":
+        cate = "BẢNG TIN GIÁO DỤC";
+            break;
+        case "khoa-hoc":
+        cate = "BẢNG TIN KHOA HỌC";
+            break;
+        case "so-hoa":
+        cate = "BẢNG TIN SỐ HÓA";
+            break;
+        case "oto-xe-may":
+        cate = "BẢNG TIN ÔTÔ XE MÁY";
+            break;
+        default:
+            break;
+    }
+    return cate;
+}
 
 function VnExpress() {
-    const linkRSS = 'https://vnexpress.net/rss/tin-moi-nhat.rss';
-    const minWord = 30;
-    const maxWord = 170;
+    const linkRSSs = [
+        "https://vnexpress.net/rss/the-gioi.rss",
+        "https://vnexpress.net/rss/thoi-su.rss",
+        "https://vnexpress.net/rss/kinh-doanh.rss",
+        "https://vnexpress.net/rss/giai-tri.rss",
+        "https://vnexpress.net/rss/the-thao.rss",
+        "https://vnexpress.net/rss/phap-luat.rss",
+        "https://vnexpress.net/rss/giao-duc.rss",
+        "https://vnexpress.net/rss/suc-khoe.rss",
+        "https://vnexpress.net/rss/khoa-hoc.rss",
+        "https://vnexpress.net/rss/so-hoa.rss",
+        "https://vnexpress.net/rss/oto-xe-may.rss"
+    ];
+    let random = Math.floor(Math.random() * linkRSSs.length);
+    const linkRSS = linkRSSs[random];
+    //const linkRSS = 'https://vnexpress.net/rss/tin-moi-nhat.rss';
+    const category = getCategory(linkRSS);
+    const minWord = 50;
+    const maxWord = 200;
 
     this.get = async() => {
         let parser = new Parser();
         let feed = await parser.parseURL(linkRSS);
         let news = [];
         for (const rss of feed.items) {
+
             if(rss.link.includes('https://vnexpress.net')) { //not get news from english/photo page
                 let imgLink = getStr(rss.content, '<img src="','"');
+                let title = getStr(rss.content, '</br>', ']]');  
                 if (imgLink && !imgLink.includes('gif')) {
+                    
                     let response = await fetch(rss.link);
                     let content = await response.text();
                     let article = getStr(content, '<article', '</article');
@@ -43,7 +108,8 @@ function VnExpress() {
                     if (description) {
                         description = description.replace(`  `,' ');
                         news.push({
-                            title: rss.title,
+                            category: category,
+                            title: title,
                             img: imgLink,
                             description: description,
                         });
