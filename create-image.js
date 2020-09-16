@@ -48,8 +48,8 @@ function CreateImage() {
         });
 
         //const canvas = createCanvas(maxWidth, height + spaceBetweenCanvas);
-        const canvas = await loadImage('background.png');
-        const ctx = canvas;
+        const canvas = createCanvas(MAX_WIDTH_CANVAS,MAX_WIDTH_CANVAS);
+        const ctx = canvas.getContext('2d');
 
         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
         ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height + margin, titleCanvas.canvas.width, titleCanvas.canvas.height);
