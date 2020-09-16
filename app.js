@@ -12,7 +12,7 @@ const generator = async () => {
 
     let createImage = new CreateImage();
     let images = [];
-    let random = Math.floor(Math.random() * linkRSSs.news);
+    let random = Math.floor(Math.random() * news.length);
     let feed = news[random];
     let message = feed.description;
     //for (const feed of news) {
