@@ -26,7 +26,7 @@ function CreateImage() {
     }
 
     this.create = async (imgLink, title, description) => {
-        const ribonNew = await loadImage('ribbon.png');
+        //const ribonNew = await loadImage('ribbon.png');
         const canvasSource = [];
         const margin = 10;
         const spaceBetweenCanvas = margin * 2 * 3; //marginTop and marginBottom 10px x 3 canvas
@@ -47,7 +47,8 @@ function CreateImage() {
             height += item.height;
         });
 
-        const canvas = createCanvas(maxWidth, height + spaceBetweenCanvas);
+        //const canvas = createCanvas(maxWidth, height + spaceBetweenCanvas);
+        const canvas = await loadImage('background.png');
         const ctx = canvas.getContext('2d');
 
         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
