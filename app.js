@@ -12,10 +12,12 @@ const generator = async () => {
 
     let createImage = new CreateImage();
     let images = [];
-    for (const feed of news) {
+    let random = Math.floor(Math.random() * linkRSSs.news);
+    let feed = news[random];
+    //for (const feed of news) {
         images.push(await createImage.create(feed.img, feed.category, feed.title));
-        break;
-    }
+    //    break;
+    //}
     let facebook = new Facebook(process.env.ACCESS_TOKEN, process.env.GROUP_ID);
 
     if (process.env.PAGE_ID) {
