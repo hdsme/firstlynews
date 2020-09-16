@@ -37,12 +37,13 @@ function VnExpress() {
         "https://vnexpress.net/rss/so-hoa.rss",
         "https://vnexpress.net/rss/oto-xe-may.rss"
     ];
-    const random = Math.floor(Math.random() * linkRSSs.length);
+    let random = Math.floor(Math.random() * linkRSSs.length);
     const linkRSS = linkRSSs[random];
     const minLength = 500;
     const maxLength = 1500;
 
     this.get = async() => {
+        if(linkRSS) {
         let parser = new Parser();
         let feed = await parser.parseURL(linkRSS);
         let news = [];
@@ -71,7 +72,7 @@ function VnExpress() {
 
             }
         }
-
+    }
         return news;
     };
 
