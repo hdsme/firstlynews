@@ -2,6 +2,7 @@ const { createCanvas, loadImage } = require('canvas');
 
 function CreateImage() {
     const MAX_WIDTH_CANVAS = 1080;
+    const MAX_HEIGHT_CANVAS = 1080;
 
     function wrapText(context, text, x, y, maxWidth, lineHeight) {
         let words = text.split(' ');
