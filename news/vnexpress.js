@@ -98,7 +98,9 @@ function VnExpress() {
     }
 
     const getCategory = (url) => {
+        
         let c = getStr(url, 'https://vnexpress.net/rss/', '.rss');
+        let cate;
         switch(c){
             case "the-gioi":
             cate = "BẢNG TIN THẾ GIỚI";
@@ -139,8 +141,9 @@ function VnExpress() {
             default:
                 break;
         }
+        return cate;
     }
-    return cate;
+    
 }
 
 module.exports = VnExpress;
