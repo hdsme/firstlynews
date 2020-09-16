@@ -13,15 +13,18 @@ const generator = async () => {
     let createImage = new CreateImage();
     let images = [];
     for (const feed of news) {
+        console.log(news);
         images.push(await createImage.create(feed.img, feed.category, feed.title));
     }
-    
+    /*
     let facebook = new Facebook(process.env.ACCESS_TOKEN, process.env.GROUP_ID);
 
     if (process.env.PAGE_ID) {
         facebook.postAsPage(process.env.PAGE_ID)
     }
     facebook.postNews(images);
+    */
+    
 };
 
 app.use((req, res, next) => {
