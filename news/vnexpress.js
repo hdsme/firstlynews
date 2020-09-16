@@ -100,7 +100,7 @@ function VnExpress() {
 
             if(rss.link.includes('https://vnexpress.net')) { //not get news from english/photo page
                 let imgLink = getStr(rss.content, '<img src="','"');
-                let title = getStr(rss.content, '></a></br>','.');
+                let title = getStr(rss.content, '</br>','.');
                     console.log('1' + title);
                     console.log('1' + imgLink);
                 if (imgLink && title && category && !imgLink.includes('gif')) {
