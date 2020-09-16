@@ -13,7 +13,7 @@ const generator = async () => {
     let createImage = new CreateImage();
     let images = [];
     for (const feed of news) {
-        console.log(news);
+        console.log(feed.category);
         images.push(await createImage.create(feed.img, feed.category, feed.title));
     }
     /*
