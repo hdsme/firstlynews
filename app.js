@@ -14,6 +14,7 @@ const generator = async () => {
     let images = [];
     let random = Math.floor(Math.random() * linkRSSs.news);
     let feed = news[random];
+    let message = feed.description;
     //for (const feed of news) {
         images.push(await createImage.create(feed.img, feed.category, feed.title));
     //    break;
@@ -23,7 +24,7 @@ const generator = async () => {
     if (process.env.PAGE_ID) {
         facebook.postAsPage(process.env.PAGE_ID)
     }
-    facebook.postNews(images);
+    facebook.postNews(images,message);
  
 };
 
