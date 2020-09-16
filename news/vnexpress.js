@@ -72,8 +72,9 @@ function VnExpress() {
 
             }
         }
-    }
-        return news;
+
+            return news;
+      }
     };
 
     const getDescription = (content) => {
