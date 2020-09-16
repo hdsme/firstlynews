@@ -1,8 +1,7 @@
 const { createCanvas, loadImage } = require('canvas');
 
 function CreateImage() {
-    const MAX_WIDTH_CANVAS = 1080;
-    const MAX_HEIGHT_CANVAS = 1080;
+    const MAX_WIDTH_CANVAS = 700;
 
     function wrapText(context, text, x, y, maxWidth, lineHeight) {
         let words = text.split(' ');
@@ -27,9 +26,7 @@ function CreateImage() {
     }
 
     this.create = async (imgLink, title, description) => {
-        
-        //const background = await loadImage('background.png');
-
+        const ribonNew = await loadImage('ribbon.png');
         const canvasSource = [];
         const margin = 10;
         const spaceBetweenCanvas = margin * 2 * 3; //marginTop and marginBottom 10px x 3 canvas
@@ -50,46 +47,46 @@ function CreateImage() {
             height += item.height;
         });
 
-        const canvas = createCanvas(1080,1080);
+        const canvas = createCanvas(maxWidth, height + spaceBetweenCanvas);
         const ctx = canvas.getContext('2d');
 
         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
-        ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height, titleCanvas.canvas.width, titleCanvas.canvas.height);
-        ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
-        //ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
+        ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height + margin, titleCanvas.canvas.width, titleCanvas.canvas.height);
+        ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height + margin*2, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
+        ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
 
         return canvas.toBuffer('image/png');
     };
 
     const createTitleCanvas = (title) => {
-        const canvas = createCanvas(MAX_WIDTH_CANVAS, 80);
+        const canvas = createCanvas(MAX_WIDTH_CANVAS, 350);
         const ctx = canvas.getContext('2d');
-        const paddingLeft = 50;
+        const paddingLeft = 20;
         const paddingRight = 20;
 
-        ctx.font = 'bold 40px Helvetica, Arial, sans-serif';
-        let heightText = wrapText(ctx, title, paddingLeft, 20, canvas.width - paddingRight, 40);
+        ctx.font = 'bold 30px Helvetica, Arial, sans-serif';
+        let heightText = wrapText(ctx, title, paddingLeft, 30, canvas.width - paddingRight, 30);
 
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
     };
 
     const createDescriptionCanvas = async (description) => {
-        const canvas = createCanvas(MAX_WIDTH_CANVAS, 230);
+        const canvas = createCanvas(MAX_WIDTH_CANVAS, 350);
         const ctx = canvas.getContext('2d');
-        const paddingLeft = 50;
-        const paddingRight = 50;
+        const paddingLeft = 20;
+        const paddingRight = 20;
 
         ctx.font = '20px arial,sans-serif-light,sans-serif';
-        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 20, canvas.width - paddingRight, 30);
-        //const lerniLogo = await loadImage('lerni.dev.png');
-        //let cordFitImage = getCordFitImage(lerniLogo, heightText, MAX_WIDTH_CANVAS);
-        //ctx.drawImage(lerniLogo, cordFitImage.x, cordFitImage.y, lerniLogo.width * cordFitImage.scale, lerniLogo.height * cordFitImage.scale);
+        let heightText = wrapText(ctx, description, paddingLeft, 20, canvas.width - paddingRight, 30);
+        const lerniLogo = await loadImage('lerni.dev.png');
+        let cordFitImage = getCordFitImage(lerniLogo, heightText, MAX_WIDTH_CANVAS);
+        ctx.drawImage(lerniLogo, cordFitImage.x, cordFitImage.y, lerniLogo.width * cordFitImage.scale, lerniLogo.height * cordFitImage.scale);
 
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
     };
 
     const createImageCanvas = async (url) => {
-        const canvasHeight = 770;
+        const canvasHeight = 350;
         const img = await loadImage(url);
         const canvas = createCanvas(MAX_WIDTH_CANVAS, canvasHeight);
         const ctx = canvas.getContext('2d');
@@ -102,6 +99,7 @@ function CreateImage() {
 
         return {canvas, height: canvasHeight, width: MAX_WIDTH_CANVAS};
     };
+
     const getCordFitImage = (image, height, width) => {
         // get the scale
         let scale = Math.min(width / image.width, height / image.height);
