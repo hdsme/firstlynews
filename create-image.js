@@ -1,7 +1,7 @@
 const { createCanvas, loadImage } = require('canvas');
 
 function CreateImage() {
-    const MAX_WIDTH_CANVAS = 700;
+    const MAX_WIDTH_CANVAS = 1080;
 
     function wrapText(context, text, x, y, maxWidth, lineHeight) {
         let words = text.split(' ');
@@ -53,18 +53,24 @@ function CreateImage() {
         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
         ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height + margin, titleCanvas.canvas.width, titleCanvas.canvas.height);
         ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height + margin*2, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
-        ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
+        //ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
 
         return canvas.toBuffer('image/png');
     };
 
     const createTitleCanvas = (title) => {
-        const canvas = createCanvas(MAX_WIDTH_CANVAS, 350);
+        const canvas = createCanvas(MAX_WIDTH_CANVAS, 80);
         const ctx = canvas.getContext('2d');
+        ctx.font = 'bold 30px Helvetica, Arial, sans-serif';
+        ctx.beginPath();
+        ctx.rect(0, 0, MAX_WIDTH_CANVAS, 80);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.fillText(title, 0, 0);
         const paddingLeft = 20;
         const paddingRight = 20;
 
-        ctx.font = 'bold 30px Helvetica, Arial, sans-serif';
+        
         let heightText = wrapText(ctx, title, paddingLeft, 30, canvas.width - paddingRight, 30);
 
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
@@ -86,7 +92,7 @@ function CreateImage() {
     };
 
     const createImageCanvas = async (url) => {
-        const canvasHeight = 350;
+        const canvasHeight = 770;
         const img = await loadImage(url);
         const canvas = createCanvas(MAX_WIDTH_CANVAS, canvasHeight);
         const ctx = canvas.getContext('2d');
