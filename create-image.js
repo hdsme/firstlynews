@@ -81,8 +81,8 @@ function CreateImage() {
 
         ctx.font = '35px arial,sans-serif-light,sans-serif';
         ctx.fillStyle = "#ffffff";
-        ctx.fillText(description, 0,0);
-        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 50, canvas.width - paddingRight, 45);
+        //ctx.fillText(description, 0,0);
+        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 0, canvas.width - paddingRight, 45);
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
     };
 
