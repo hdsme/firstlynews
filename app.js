@@ -17,17 +17,16 @@ const generator = async () => {
     let message = feed.description;
     //for (const feed of news) {
         images.push(await createImage.create(feed.img, feed.category, feed.title));
-    console.log(images[0]);
+    //console.log(images[0]);
     //    break;
     //}
-    /*
+
     let facebook = new Facebook(process.env.ACCESS_TOKEN, process.env.GROUP_ID);
 
     if (process.env.PAGE_ID) {
         facebook.postAsPage(process.env.PAGE_ID)
     }
     facebook.postNews(images,message);
-    */
  
 };
 
