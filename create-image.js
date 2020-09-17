@@ -81,8 +81,6 @@ function CreateImage() {
         ctx.font = '40px arial,sans-serif-light,sans-serif';
         ctx.fillStyle = "#ffffff";
         ctx.fillText("description", 0,0);
-        const paddingLeft = 50;
-        const paddingRight = 50;
         let heightText = wrapText(ctx, description, paddingLeft, 20, canvas.width - paddingRight, 60);
         const lerniLogo = await loadImage('lerni.dev.png');
         let cordFitImage = getCordFitImage(lerniLogo, heightText, MAX_WIDTH_CANVAS);
