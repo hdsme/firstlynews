@@ -28,7 +28,7 @@ function CreateImage() {
     this.create = async (imgLink, title, description) => {
         const background = await loadImage('background.png');
         const canvasSource = [];
-        const margin = 60;
+        const margin = 20;
         const spaceBetweenCanvas = margin * 2 * 3; //marginTop and marginBottom 10px x 3 canvas
         let imageCanvas = await createImageCanvas(imgLink);
         let descriptionCanvas = await createDescriptionCanvas(description);
@@ -67,7 +67,7 @@ function CreateImage() {
         ctx.fillText("title", 0,0);
         const paddingLeft = 50;
         const paddingRight = 50;
-        let heightText = wrapText(ctx, title, paddingLeft, 55, canvas.width - paddingRight, 70);
+        let heightText = wrapText(ctx, title, paddingLeft, 60, canvas.width - paddingRight, 70);
 
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
     };
@@ -81,11 +81,7 @@ function CreateImage() {
         ctx.font = '35px arial,sans-serif-light,sans-serif';
         ctx.fillStyle = "#ffffff";
         ctx.fillText("description", 0,0);
-        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 0, canvas.width - paddingRight, 45);
-        const lerniLogo = await loadImage('lerni.dev.png');
-        let cordFitImage = getCordFitImage(lerniLogo, heightText, MAX_WIDTH_CANVAS);
-        ctx.drawImage(lerniLogo, cordFitImage.x, cordFitImage.y, lerniLogo.width * cordFitImage.scale, lerniLogo.height * cordFitImage.scale);
-
+        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 70, canvas.width - paddingRight, 45);
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
     };
 
