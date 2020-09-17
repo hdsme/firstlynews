@@ -53,8 +53,8 @@ function CreateImage() {
         ctx.drawImage(background, 0, 0, background.width, background.height);
         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
         ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height, titleCanvas.canvas.width, titleCanvas.canvas.height);
-        ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height + margin, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
-        ctx.drawImage(descriptionCanvas.canvas, 0, 50 + margin, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
+        ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
+        //ctx.drawImage(descriptionCanvas.canvas, 0, 50 + margin, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
         //ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
 
         return canvas.toBuffer('image/png');
