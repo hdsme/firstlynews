@@ -110,6 +110,7 @@ function VnExpress() {
                     let content = await response.text();
                     let article = getStr(content, '<article', '</article');
                     let description = getDescription(article);
+                    console.log(description);
                     if (description) {
                         description = description.replace(`  `,' ');
                         news.push({
@@ -119,6 +120,7 @@ function VnExpress() {
                             description: description,
                         });
                     }
+                    console.log(news);
                 }
 
 
