@@ -62,12 +62,12 @@ function CreateImage() {
     const createTitleCanvas = (title) => {
         const canvas = createCanvas(MAX_WIDTH_CANVAS, 80);
         const ctx = canvas.getContext('2d');
-        ctx.font = 'bold 60px Helvetica, Arial, sans-serif';
+        ctx.font = 'bold 50px Helvetica, Arial, sans-serif';
         ctx.fillStyle = "#ffffff";
         ctx.fillText("title", 0,0);
         const paddingLeft = 50;
         const paddingRight = 50;
-        let heightText = wrapText(ctx, title, paddingLeft, 70, canvas.width - paddingRight, 60);
+        let heightText = wrapText(ctx, title, paddingLeft, 70, canvas.width - paddingRight, 70);
 
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
     };
@@ -81,7 +81,7 @@ function CreateImage() {
         ctx.font = '40px arial,sans-serif-light,sans-serif';
         ctx.fillStyle = "#ffffff";
         ctx.fillText("description", 0,0);
-        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 50, canvas.width - paddingRight, 50);
+        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 60, canvas.width - paddingRight, 50);
         const lerniLogo = await loadImage('lerni.dev.png');
         let cordFitImage = getCordFitImage(lerniLogo, heightText, MAX_WIDTH_CANVAS);
         ctx.drawImage(lerniLogo, cordFitImage.x, cordFitImage.y, lerniLogo.width * cordFitImage.scale, lerniLogo.height * cordFitImage.scale);
