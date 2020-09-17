@@ -78,10 +78,10 @@ function CreateImage() {
         const paddingLeft = 50;
         const paddingRight = 50;
 
-        ctx.font = '40px arial,sans-serif-light,sans-serif';
+        ctx.font = '35px arial,sans-serif-light,sans-serif';
         ctx.fillStyle = "#ffffff";
         ctx.fillText("description", 0,0);
-        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 60, canvas.width - paddingRight, 50);
+        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 60, canvas.width - paddingRight, 45);
         const lerniLogo = await loadImage('lerni.dev.png');
         let cordFitImage = getCordFitImage(lerniLogo, heightText, MAX_WIDTH_CANVAS);
         ctx.drawImage(lerniLogo, cordFitImage.x, cordFitImage.y, lerniLogo.width * cordFitImage.scale, lerniLogo.height * cordFitImage.scale);
