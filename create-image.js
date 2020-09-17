@@ -52,8 +52,8 @@ function CreateImage() {
         const ctx = canvas.getContext('2d');
         ctx.drawImage(background, 0, 0, background.width, background.height);
         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
-        ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height + margin, titleCanvas.canvas.width, titleCanvas.canvas.height);
-        ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height + margin*2, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
+        ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height, titleCanvas.canvas.width, titleCanvas.canvas.height);
+        ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height , descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
         //ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
 
         return canvas.toBuffer('image/png');
@@ -67,7 +67,7 @@ function CreateImage() {
         ctx.fillText("title", 0,0);
         const paddingLeft = 50;
         const paddingRight = 50;
-        let heightText = wrapText(ctx, title, paddingLeft, 30, canvas.width - paddingRight, 60);
+        let heightText = wrapText(ctx, title, paddingLeft, 50, canvas.width - paddingRight, 60);
 
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
     };
