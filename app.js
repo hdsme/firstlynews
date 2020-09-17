@@ -16,6 +16,7 @@ const generator = async () => {
     let feed = news[random];
     let message = feed.description;
     console.log(message);
+    console.log(feed.title);
     //for (const feed of news) {
         images.push(await createImage.create(feed.img, feed.category, feed.title));
     //console.log(images[0]);
