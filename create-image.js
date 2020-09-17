@@ -73,7 +73,7 @@ function CreateImage() {
     };
 
     const createDescriptionCanvas = async (description) => {
-        const canvas = createCanvas(MAX_WIDTH_CANVAS, 350);
+        const canvas = createCanvas(MAX_WIDTH_CANVAS, 230);
         const ctx = canvas.getContext('2d');
         const paddingLeft = 50;
         const paddingRight = 50;
@@ -81,7 +81,7 @@ function CreateImage() {
         ctx.font = '40px arial,sans-serif-light,sans-serif';
         ctx.fillStyle = "#ffffff";
         ctx.fillText("description", 0,0);
-        let heightText = wrapText(ctx, description, paddingLeft, 20, canvas.width - paddingRight, 60);
+        let heightText = wrapText(ctx, description.toUpperCase(), paddingLeft, 20, canvas.width - paddingRight, 60);
         const lerniLogo = await loadImage('lerni.dev.png');
         let cordFitImage = getCordFitImage(lerniLogo, heightText, MAX_WIDTH_CANVAS);
         ctx.drawImage(lerniLogo, cordFitImage.x, cordFitImage.y, lerniLogo.width * cordFitImage.scale, lerniLogo.height * cordFitImage.scale);
@@ -94,12 +94,12 @@ function CreateImage() {
         const img = await loadImage(url);
         const canvas = createCanvas(MAX_WIDTH_CANVAS, canvasHeight);
         const ctx = canvas.getContext('2d');
-        ctx.fillStyle = "#9b9b9b";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        //ctx.fillStyle = "#9b9b9b";
+        //ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        let cordFitImage = getCordFitImage(img, canvas.height, canvas.width);
+        let cordFitImage = getFitImage(img, canvas.height, canvas.width);
 
-        ctx.drawImage(img, cordFitImage.x, cordFitImage.y, img.width * cordFitImage.scale, img.height * cordFitImage.scale);
+        ctx.drawImage(img, cordFitImage.x, cordFitImage.y, cordFitImage.max_width, cordFitImage.max_height);
 
         return {canvas, height: canvasHeight, width: MAX_WIDTH_CANVAS};
     };
@@ -113,6 +113,19 @@ function CreateImage() {
         let y = (height / 2) - (image.height / 2) * scale;
 
         return {scale, x, y};
+    }
+    
+    const getFitImage = (image, height, width) => {
+        // get the scale
+        let ratio = image.width / image.height;
+        let max_height = height;
+        let max_width = ratio*height;
+        
+        // get the top left position of the image
+        let x = (width - max_width)/2
+        let y = (height - max_height)/2;
+        
+        return {ratio, x, y, max_width, max_height};
     }
 }
 
