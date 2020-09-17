@@ -67,7 +67,7 @@ function CreateImage() {
         ctx.fillText("title", 0,0);
         const paddingLeft = 50;
         const paddingRight = 50;
-        let heightText = wrapText(ctx, title, paddingLeft, 60, canvas.width - paddingRight, 70);
+        let heightText = wrapText(ctx, title, paddingLeft, 60, canvas.width - paddingRight, 0);
 
         return {canvas, height: heightText, width: MAX_WIDTH_CANVAS};
     };
