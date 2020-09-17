@@ -85,10 +85,10 @@ function VnExpress() {
     ];
     let random = Math.floor(Math.random() * linkRSSs.length);
     const linkRSS = linkRSSs[random];
-    //console.log(linkRSS);
+    console.log(linkRSS);
     //const linkRSS = 'https://vnexpress.net/rss/tin-moi-nhat.rss';
     const category = getCategory(linkRSS);
-    //console.log(category);
+    console.log(category);
     const minWord =50;
     const maxWord = 350;
 
@@ -110,7 +110,6 @@ function VnExpress() {
                     let content = await response.text();
                     let article = getStr(content, '<article', '</article');
                     let description = getDescription(article);
-                    console.log(description);
                     if (description) {
                         description = description.replace(`  `,' ');
                         description = description.replace('\n','');
@@ -121,7 +120,6 @@ function VnExpress() {
                             description: description,
                         });
                     }
-                    console.log(news);
                 }
 
 
