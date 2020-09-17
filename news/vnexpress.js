@@ -89,7 +89,7 @@ function VnExpress() {
     //const linkRSS = 'https://vnexpress.net/rss/tin-moi-nhat.rss';
     const category = getCategory(linkRSS);
     //console.log(category);
-    const minWord = 200;
+    const minWord =50;
     const maxWord = 350;
 
     this.get = async() => {
