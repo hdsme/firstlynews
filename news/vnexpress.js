@@ -115,10 +115,6 @@ function VnExpress() {
                     if (description) {
                         description = description.replace(`  `,' ');
                         description = description.replace('\n','');
-                        console.log(category);
-                        console.log(title);
-                        console.log(imgLink);
-                        console.log(description);
                         news.push({
                             category: category,
                             title: title,
@@ -131,7 +127,6 @@ function VnExpress() {
 
             }
         }
-        console.log(news);
         return news;
     };
     
