@@ -127,10 +127,10 @@ function VnExpress() {
 
             }
         }
-
+        console.log(news.length);
         return news;
     };
-    console.log(news.length);
+    
     const getDescription = (content) => {
         let descriptions = getAllStr(content, '<p', '</p>');
 
