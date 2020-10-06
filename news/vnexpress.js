@@ -106,8 +106,8 @@ function VnExpress() {
                     //console.log('1' + imgLink);
                 if (imgLink && title && category && !imgLink.includes('gif')) {
                     title = title.trim();
-                    console.log(title);
-                    console.log(imgLink);
+                    //console.log(title);
+                    //console.log(imgLink);
                     let response = await fetch(rss.link);
                     let content = await response.text();
                     let article = getStr(content, '<article', '</article');
@@ -130,7 +130,7 @@ function VnExpress() {
 
         return news;
     };
-
+    console.log(news.length);
     const getDescription = (content) => {
         let descriptions = getAllStr(content, '<p', '</p>');
 
