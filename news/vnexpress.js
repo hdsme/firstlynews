@@ -115,6 +115,7 @@ function VnExpress() {
                     if (description) {
                         description = description.replace(`  `,' ');
                         description = description.replace('\n','');
+                        console.log(description);
                         news.push({
                             category: category,
                             title: title,
