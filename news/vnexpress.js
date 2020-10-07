@@ -128,7 +128,7 @@ function VnExpress() {
 
             }
         }
-        console.log(news[0]);
+        console.log("END");
         return news;
     };
     
