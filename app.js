@@ -13,7 +13,7 @@ const generator = async () => {
     let createImage = new CreateImage();
     let images = [];
     let random = Math.floor(Math.random() * news.length);
-    let feed = news[random];
+    let feed = news[0];
     let message = feed.description;
     console.log(message);
     console.log(feed.title);
