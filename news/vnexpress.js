@@ -78,7 +78,7 @@ function VnExpress() {
         "https://vnexpress.net/rss/the-thao.rss",
         "https://vnexpress.net/rss/phap-luat.rss",
         "https://vnexpress.net/rss/giao-duc.rss",
-        "https://vnexpress.net/rss/suc-khoe.rss",
+        //"https://vnexpress.net/rss/suc-khoe.rss",
         "https://vnexpress.net/rss/khoa-hoc.rss",
         "https://vnexpress.net/rss/so-hoa.rss",
         "https://vnexpress.net/rss/oto-xe-may.rss"
