@@ -99,18 +99,19 @@ function CreateImage() {
     };
 
     const createImageCanvas = async (url) => {
+        let canvasHeight;
         switch (POST_TYPE)
         {
             case 0 : { // Bài đăng hình ảnh đơn
-                const canvasHeight = 1080;
+                let canvasHeight = 1080;
                 break;
             }
             case 1 : { // Bài đăng hình ảnh
-                const canvasHeight = 770;
+                let canvasHeight = 770;
                 break;
             }
             default : {
-                const canvasHeight = 770;
+                let canvasHeight = 770;
             }
         }
         const img = await loadImage(url);
