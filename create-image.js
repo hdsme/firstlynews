@@ -99,6 +99,7 @@ function CreateImage() {
     };
 
     const createImageCanvas = async (url) => {
+        let canvasHeight;
         switch (POST_TYPE)
         {
             case 0 : // Bài đăng hình ảnh đơn
