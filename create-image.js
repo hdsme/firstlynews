@@ -1,8 +1,8 @@
 const { createCanvas, loadImage } = require('canvas');
 
 function CreateImage() {
-    const MAX_WIDTH_CANVAS = 1080;
-
+    const MAX_WIDTH_CANVAS = 1080; // Width = 1080px
+    const POST_TYPE = Math.floor(Math.random() * 2); // 2 type post
     function wrapText(context, text, x, y, maxWidth, lineHeight) {
         let words = text.split(' ');
         let line = '';
@@ -50,13 +50,25 @@ function CreateImage() {
         //const canvas = createCanvas(maxWidth, height + spaceBetweenCanvas);
         const canvas = createCanvas(MAX_WIDTH_CANVAS,MAX_WIDTH_CANVAS);
         const ctx = canvas.getContext('2d');
-        ctx.drawImage(background, 0, 0, background.width, background.height);
-        ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
-        ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height, titleCanvas.canvas.width, titleCanvas.canvas.height);
-        ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
-        //ctx.drawImage(descriptionCanvas.canvas, 0, 50 + margin, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
-        //ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
+        switch(POST_TYPE){
+            case 0: {
+                        ctx.drawImage(background, 0, 0, background.width, background.height);
+                        ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
+                break;
+            }
+            case 1: {
+                        ctx.drawImage(background, 0, 0, background.width, background.height);
+                        ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
+                        ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height, titleCanvas.canvas.width, titleCanvas.canvas.height);
+                        ctx.drawImage(descriptionCanvas.canvas, 0, imageCanvas.canvas.height + titleCanvas.height, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
+                        //ctx.drawImage(descriptionCanvas.canvas, 0, 50 + margin, descriptionCanvas.canvas.width, descriptionCanvas.canvas.height);
+                        //ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
 
+                break;
+            }
+           defalt: {
+           }
+        }
         return canvas.toBuffer('image/png');
     };
 
@@ -87,7 +99,20 @@ function CreateImage() {
     };
 
     const createImageCanvas = async (url) => {
-        const canvasHeight = 770;
+        switch (POST_TYPE)
+        {
+            case 0 : { // Bài đăng hình ảnh đơn
+                const canvasHeight = 1080;
+                break;
+            }
+            case 1 : { // Bài đăng hình ảnh
+                const canvasHeight = 770;
+                break;
+            }
+            default : {
+                // do something
+            }
+        }
         const img = await loadImage(url);
         const canvas = createCanvas(MAX_WIDTH_CANVAS, canvasHeight);
         const ctx = canvas.getContext('2d');
