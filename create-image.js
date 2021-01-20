@@ -51,12 +51,12 @@ function CreateImage() {
         const canvas = createCanvas(MAX_WIDTH_CANVAS,MAX_WIDTH_CANVAS);
         const ctx = canvas.getContext('2d');
         switch(POST_TYPE){
-            case 0: {
+            case 0:
                         ctx.drawImage(background, 0, 0, background.width, background.height);
                         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
                 break;
-            }
-            case 1: {
+           
+            case 1:
                         ctx.drawImage(background, 0, 0, background.width, background.height);
                         ctx.drawImage(imageCanvas.canvas, 0, 0, imageCanvas.canvas.width, imageCanvas.canvas.height);
                         ctx.drawImage(titleCanvas.canvas, 0,  imageCanvas.canvas.height, titleCanvas.canvas.width, titleCanvas.canvas.height);
@@ -65,9 +65,9 @@ function CreateImage() {
                         //ctx.drawImage(ribonNew, maxWidth - (ribonNew.width/3) + 17, -17, ribonNew.width/3, ribonNew.height/3);
 
                 break;
-            }
-           defalt: {
-           }
+           
+           defalt: 
+           
         }
         return canvas.toBuffer('image/png');
     };
@@ -99,20 +99,17 @@ function CreateImage() {
     };
 
     const createImageCanvas = async (url) => {
-        let canvasHeight;
         switch (POST_TYPE)
         {
-            case 0 : { // Bài đăng hình ảnh đơn
-                let canvasHeight = 1080;
+            case 0 : // Bài đăng hình ảnh đơn
+                const canvasHeight = 1080;
                 break;
-            }
-            case 1 : { // Bài đăng hình ảnh
-                let canvasHeight = 770;
+            
+            case 1 :  // Bài đăng hình ảnh
+                const canvasHeight = 770;
                 break;
-            }
-            default : {
-                let canvasHeight = 770;
-            }
+            
+            default :
         }
         const img = await loadImage(url);
         const canvas = createCanvas(MAX_WIDTH_CANVAS, canvasHeight);
