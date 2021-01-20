@@ -103,11 +103,11 @@ function CreateImage() {
         switch (POST_TYPE)
         {
             case 0 : // Bài đăng hình ảnh đơn
-                const canvasHeight = 1080;
+                canvasHeight = 1080;
                 break;
             
             case 1 :  // Bài đăng hình ảnh
-                const canvasHeight = 770;
+                canvasHeight = 770;
                 break;
             
             default :
