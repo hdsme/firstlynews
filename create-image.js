@@ -110,7 +110,7 @@ function CreateImage() {
                 break;
             }
             default : {
-                // do something
+                const canvasHeight = 770;
             }
         }
         const img = await loadImage(url);
