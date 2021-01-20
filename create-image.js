@@ -66,7 +66,7 @@ function CreateImage() {
 
                 break;
            
-           defalt: 
+           default: 
            
         }
         return canvas.toBuffer('image/png');
