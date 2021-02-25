@@ -14,7 +14,10 @@ const generator = async () => {
     let images = [];
     let random = Math.floor(Math.random() * news.length);
     let feed = news[0];
-    let message = feed.description;
+    let hashtags= ["#tríchdẫn #thanhxuan #buồn #tâmtrang #buon #tinhyêu #yêuthuong #nhớ #thanhxuân #trichdanhay #trichdan #trichdanphim #yêu #congai #tamtrang #suutâm #ngôntình #ngontinh #ngontinhquotes #donphuong #codon #tinhyeu #buon #vietquote #vietquotes #saigon #hanoi #hanoifood #saigonfood","#huonggiang #chipu #tranthanh #phodibo #phuonglyharuharu #hoaminzy #topcomments #vui #vuivẻ #hàihước #haihuoc #anhhai #ảnhchế #buoncuoi #giaitri #anhche #tríchdẫn #nhớ #quotevietnam #tamsu #vuive #trichdansach #buồn #tríchdẫnhay #chiatay #yêuthuong #độcthânvuitính #docthanvuitinhlaemhai #buon #cuoi","#haivl #cuoiia #cười #hài #meme #cuoichamchovui #anhthe #ảnhthẻ #anhdaden #anhdađen #hocsinh #cap3 #suutam #tinhyeu #thanhxuan #congai #bua #sinhvien #badao #giảitrí #buồncười #anhdavang #hàihước #buồncười #videohay #videongontinh #tinhcam #camdong #ngôntìnhtrungquốc #quotes","#nguoiloncodon #ngontinhquotes #ngôntìnhtrungquốc #nhớ #itaewonclass #goodmorning #tríchdẫnhay #tuổitrẻ #thờithanhxuân #truyệnngôntình #chungtacuasaunay","#tiktokmoi #tiktokchina #tiktokngontinh #ngontinh #langman #ýnghĩa #chuyencuachungminhne #chuyenchungminh #chuyenhomnay #chuyencuatui #trichdanhay #missyouguys #chuyện #nắng #quotestonghop #quotestoliveby #quotesvn #tâmtrạng #buồn #sadstory",];
+    let indexhash = Math.floor(Math.random() * hashtags.length);
+    let hashtag = hashtags[indexhash];
+    let message = (feed.description) + "\n" + hashtag;
     console.log(message);
     console.log(feed.title);
     //for (const feed of news) {
