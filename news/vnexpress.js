@@ -28,40 +28,40 @@ function getCategory(url){
     let cate;
     switch(c){
         case "the-gioi":
-        cate = "BẢNG TIN THẾ GIỚI";
+        cate = "BẢN TIN THẾ GIỚI";
             break;
         case "thoi-su":
-        cate = "BẢNG TIN THỜI SỰ";
+        cate = "BẢN TIN THỜI SỰ";
             break;
         case "kinh-doanh":
-        cate = "BẢNG TIN KINH DOANH";
+        cate = "BẢN TIN KINH DOANH";
             break;
         case "giai-tri":
-        cate = "BẢNG TIN GIẢI TRÍ";
+        cate = "BẢN TIN GIẢI TRÍ";
             break;
         case "the-thao":
-        cate = "BẢNG TIN THỂ THAO";
+        cate = "BẢN TIN THỂ THAO";
             break;
         case "suc-khoe":
-        cate = "BẢNG TIN SỨC KHỎE";
+        cate = "BẢN TIN SỨC KHỎE";
             break;
         case "phap-luat":
-        cate = "BẢNG TIN PHÁP LUẬT";
+        cate = "BẢN TIN PHÁP LUẬT";
             break;
         case "the-thao":
-        cate = "BẢNG TIN THỂ THAO";
+        cate = "BẢN TIN THỂ THAO";
             break;
         case "giao-duc":
-        cate = "BẢNG TIN GIÁO DỤC";
+        cate = "BẢN TIN GIÁO DỤC";
             break;
         case "khoa-hoc":
-        cate = "BẢNG TIN KHOA HỌC";
+        cate = "BẢN TIN KHOA HỌC";
             break;
         case "so-hoa":
-        cate = "BẢNG TIN SỐ HÓA";
+        cate = "BẢN TIN SỐ HÓA";
             break;
         case "oto-xe-may":
-        cate = "BẢNG TIN ÔTÔ XE MÁY";
+        cate = "BẢN TIN ÔTÔ XE MÁY";
             break;
         default:
             break;
